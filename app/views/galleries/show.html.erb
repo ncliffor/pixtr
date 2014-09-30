@@ -3,3 +3,12 @@
 <h2>Its full of <%= @gallery.description %></h2>
 
 <a href="/galleries/">Let's Do the Time Warp again</a>
+
+<ul>
+  <% @gallery.images.each do |image| %>
+      <%= image_tag image.url %>
+      <div>
+      <%= link_to image.name, gallery_image_path(@gallery, image) %>
+      </div>
+  <% end %>
+</ul>
