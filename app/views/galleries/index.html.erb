@@ -10,7 +10,10 @@
       </a>
       -
       <%= gallery.description %>
+
+      <%= link_to "EDIT", "/galleries/#{gallery.id}/edit" %>
       <a href="/galleries/<%= gallery.id %>/edit">edit</a>
+
       <form action="/galleries/<%= gallery.id %>" method="POST">
 
         <input type="hidden" name="_method" value="DELETE" />
