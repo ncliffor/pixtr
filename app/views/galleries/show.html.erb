@@ -2,13 +2,16 @@
 
 <h2>Its full of <%= @gallery.description %></h2>
 
-<a href="/galleries/">Let's Do the Time Warp again</a>
+<a href="/galleries/">Let's Do the Time Warp again (go home)</a>
+
+<%= link_to "New Image", new_gallery_image_path(@gallery) %>
 
 <ul>
-  <% @gallery.images.each do |image| %>
+  <li><% @gallery.images.each do |image| %>
       <%= image_tag image.url %>
       <div>
-      <%= link_to image.name, gallery_image_path(@gallery, image) %>
+        <%= link_to image.name, gallery_image_path(@gallery, image) %>
       </div>
-  <% end %>
+    <% end %>
+  </li>
 </ul>
