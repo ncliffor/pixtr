@@ -10,9 +10,13 @@ class GalleriesController < ApplicationController
   end
 
   def create
-    gallery = Gallery.create(gallery_params)
+    @gallery = Gallery.new(gallery_params)
 
-    redirect_to gallery_path(gallery)
+    if @gallery.save
+      redirect_to gallery_path(@gallery)
+    else
+      render :new
+    end
   end
 
   def show
@@ -25,15 +29,19 @@ class GalleriesController < ApplicationController
   end
 
   def update
-    load_gallery_from_url.update(gallery_params)
+    @gallery = load_gallery_from_url
 
-    redirect_to gallery_path(load_gallery_from_url)
+    if @gallery.update(gallery_params)
+      redirect_to gallery_path(@gallery)
+    else
+      render :edit
+    end
   end
 
   def destroy
     load_gallery_from_url.destroy
 
-    redirect_to "/"
+    redirect_to root_path
   end
 
   def gallery_params
@@ -43,5 +51,4 @@ class GalleriesController < ApplicationController
   def load_gallery_from_url
     Gallery.find(params[:id])
   end
-
 end
