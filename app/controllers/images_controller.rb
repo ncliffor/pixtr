@@ -4,6 +4,7 @@ class ImagesController < ApplicationController
     @image = @gallery.images.find(params[:id])
     @comment = Comment.new
     @comments = @image.comments
+    @comments = @image.comments.recent
   end
 
   def load_gallery_from_url

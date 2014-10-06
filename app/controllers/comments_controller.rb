@@ -7,13 +7,13 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to gallery_image_path(@gallery, @image)
     else
-      @comments = @image.comments.all
+      @comments = @image.comments.recent
       render "images/show"
     end
   end
 
   def show
-
+    @comments = @image.comments.recent.all
   end
 
   private
