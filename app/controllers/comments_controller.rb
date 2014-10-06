@@ -3,11 +3,11 @@ class CommentsController < ApplicationController
     @image = Image.find(params[:image_id])
     @comment = @image.comments.new(comment_params)
     @gallery = @image.gallery
-    @comments = @image.comments
 
     if @comment.save
       redirect_to gallery_image_path(@gallery, @image)
     else
+      @comments = @image.comments.all
       render "images/show"
     end
   end
