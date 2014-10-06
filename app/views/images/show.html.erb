@@ -7,3 +7,20 @@
 </div>
 
 <%= link_to "Edit this image", edit_gallery_image_path(@gallery, @image) %>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <div>
+      <li><%= comment.user.email %> - <%= comment.body %></li>
+    </div>
+  <% end %>
+</ul>
+
+<%= form_for [@image, @comment] do |form| %>
+  <%= render "error_messages", target: @comment %>
+  <div>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+  <%= form.submit %>
+<% end %>
