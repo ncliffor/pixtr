@@ -3,12 +3,12 @@ class ImagesController < ApplicationController
     @gallery = load_gallery_from_url
     @image = @gallery.images.find(params[:id])
     @comment = Comment.new
-    @comments = @image.comments
     @comments = @image.comments.recent
   end
 
   def load_gallery_from_url
-    current_user.galleries.find(params[:gallery_id])
+    Gallery.find(params[:gallery_id])
+    #current_user.galleries.find(params[:gallery_id])
   end
 
   def new
@@ -50,5 +50,9 @@ class ImagesController < ApplicationController
     params.
     require(:image).
       permit(:name, :url)
+  end
+
+  def load_personal_gallery_from_url
+      current_user.galleries.find(params[:id])
   end
 end

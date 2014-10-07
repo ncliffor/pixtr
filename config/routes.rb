@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :images, only: [] do
     resources :comments, only: [:create, :show]
   end
+  
+  resources :groups, only: [:index]
 end
 
 #  get "/galleries" => "galleries#index"
