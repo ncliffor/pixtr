@@ -17,6 +17,9 @@
       max-height: 25%;
       max-width: 25%;
     }
+    .gnome{
+      align: middle;
+    }
   </style>
 </head>
 <body>
@@ -30,8 +33,8 @@
       <%= link_to "Sign up", new_user_path %>
     <% end %>
   </header>
-
   <h1><%= link_to "Pixtr", root_path %></h1>
+  <header class="gnome"><img src ="http://cdn.toonvectors.com/images/2/48122/toonvectors-48122-140.jpg"  /></header>
 
   <% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
