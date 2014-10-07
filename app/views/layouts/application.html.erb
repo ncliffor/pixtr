@@ -17,16 +17,13 @@
       max-height: 25%;
       max-width: 25%;
     }
-    .gnome{
-      align: middle;
-    }
   </style>
 </head>
 <body>
   <header class="session">
     <% if signed_in? %>
       <%= link_to "Groups", groups_path %>
-      <%= link_to "Galleries", galleries_path %>
+      <%= link_to "Galleries", galleries_path %> | 
       <%= link_to "Sign out", session_path, method: :delete %>
     <% else %>
       <%= link_to "Sign in", new_session_path %>
@@ -34,7 +31,7 @@
     <% end %>
   </header>
   <h1><%= link_to "Pixtr", root_path %></h1>
-  <header class="gnome"><img src ="http://cdn.toonvectors.com/images/2/48122/toonvectors-48122-140.jpg"  /></header>
+  <img src ="http://cdn.toonvectors.com/images/2/48122/toonvectors-48122-140.jpg"  />
 
   <% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
