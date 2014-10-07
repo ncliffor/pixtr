@@ -7,11 +7,11 @@
       <%= link_to group.name, group %>
       -
       <%= group.description %>
-      (<% if group.members.include? current_user %>
-        yes
+      <% if group.members.include? current_user %>
+        <%= button_to "Leave Group" %>
       <% else%>
-        no
-      <% end %>)
+        <%= button_to "Join Group", group_group_memberships_path(group) %>
+      <% end %>
     </li>
   <% end %>
 </ul>
