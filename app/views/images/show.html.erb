@@ -1,4 +1,4 @@
-<h2>This is the <%= @image.name %></h2>
+<h2>This is the <%= @image.name %> photo</h2>
 
 <%= link_to "Back to gallery", @gallery %>
 
@@ -8,7 +8,11 @@
 
 <%= link_to "Edit this image", edit_gallery_image_path(@gallery, @image) %>
 
-<%= button_to "Like this image", image_likes_path(@image) %>
+<% if ! current_user.likes?(@image) %>
+  <%= button_to "Like this image", image_like_path(@image) %>
+<% else %>
+  <%= button_to "Unlike this image", image_like_path(@image), method: :delete %>
+<% end %>
 
 <ul>
   <% @comments.each do |comment| %>
