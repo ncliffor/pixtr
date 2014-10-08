@@ -15,6 +15,15 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  
+  def index
+    @users = User.all
+  end
+
+  def show
+    @images = Image.all
+    @user = User.find(params[:id])
+  end
 
   private
 

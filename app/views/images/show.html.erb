@@ -15,10 +15,17 @@
 <% end %>
 
 <ul>
+Likes <%= @image.likes.count %>
+<% @image.likes.each do |like| %>
+  <li><%= like.user.email %> </li>
+<% end %>
+</ul>
+
+
+
   <% @comments.each do |comment| %>
     <%= render "comments/comment", comment: comment %>
   <% end %>
-</ul>
 
 <%= form_for [@image, @comment] do |form| %>
   <%= render "error_messages", target: @comment %>
@@ -28,3 +35,4 @@
   </div>
   <%= form.submit %>
 <% end %>
+

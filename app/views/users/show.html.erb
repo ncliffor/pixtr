@@ -1,0 +1,5 @@
+<h2><%= @user.email %> liked photos</h2>
+
+<% @user.likes.each do |like| %>
+<%= image_tag like.image.url %>
+<% end %>
