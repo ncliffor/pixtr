@@ -20,6 +20,7 @@ class ImagesController < ApplicationController
   def create
     @gallery = load_gallery_from_url
     @image =  @gallery.images.new(image_params)
+    @group = Group.find(params[:id])
 
     if @image.save
       redirect_to (@gallery)
@@ -49,7 +50,7 @@ class ImagesController < ApplicationController
   def image_params
     params.
     require(:image).
-      permit(:name, :url)
+      permit(:name, :url, group_ids: [])
   end
 
   def load_personal_gallery_from_url

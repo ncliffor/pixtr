@@ -2,6 +2,12 @@
 
 <%= link_to "Back to gallery", @gallery %>
 
+
+<%= form_for [@image.gallery, @image] do |form| %>
+  <%= form.collection_check_boxes(:group_ids, Group.all, :id, :name) %>
+  <%= form.submit %>
+<% end %>
+
 <div>
 <%= image_tag @image.url %>
 </div>
