@@ -40,7 +40,8 @@ class GalleriesController < ApplicationController
   end
 
   def destroy
-    load_personal_from_url.destroy
+    gallery = load_personal_gallery_from_url
+    gallery.destroy
 
     redirect_to root_path
   end

@@ -1,5 +1,7 @@
+<body id="users">
 <h2>Users</h2>
 
 <% @users.each do |user| %>
   <li><%= link_to user.email, user %></li>
 <% end %>
+</body>

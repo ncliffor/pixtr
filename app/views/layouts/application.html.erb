@@ -17,14 +17,22 @@
       max-height: 25%;
       max-width: 25%;
     }
+    body#users{
+      background-image: url(
+  "http://cdn.toonvectors.com/images/2/48122/toonvectors-48122-140.jpg"
+  );
+background-position: 100px 50px; 
+      background-size: 1200px;
+      background-repeat: no-repeat;
+    }
   </style>
 </head>
 <body>
   <header class="session">
     <% if signed_in? %>
-      <%= link_to "Tags", tags_path %>
       <%= link_to "Groups", groups_path %>
       <%= link_to "Galleries", galleries_path %>
+      <%= link_to "Tags", tags_path %>
       <%= link_to "User", users_path %> |
       <%= link_to "Sign out", session_path, method: :delete %>
     <% else %>

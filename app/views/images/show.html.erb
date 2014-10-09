@@ -1,23 +1,35 @@
-<h2>This is the <%= @image.name %> photo</h2>
-
 <%= link_to "Back to gallery", @gallery %>
+
+<h2>This is the <%= @image.name %> photo</h2>
 
 
 <%= form_for [@image.gallery, @image] do |form| %>
-  <%= form.collection_check_boxes(:group_ids, Group.all, :id, :name) %>
-  <%= form.submit %>
+  <strong>Groups: </strong><%= form.collection_check_boxes(:group_ids, Group.all, :id, :name) %>
+  <%= form.submit "Group Image" %>
+<% end %>
+
+<%= form_for [@gallery, @image] do |form| %>
+<strong>Tags: </strong><%= form.collection_check_boxes(:tag_ids, @available_tags, :id, :name) %>
+<%= form.submit "Update Tags" %>
 <% end %>
 
 <div>
 <%= image_tag @image.url %>
 </div>
 
-<%= link_to "Edit this image", edit_gallery_image_path(@gallery, @image) %>
+
+<% if @gallery.user == current_user %>
+  <%= link_to "Edit this image", edit_gallery_image_path(@gallery, @image) %>
+<%end %>
 
 <% if current_user.likes?(@image) %>
   <%= button_to "Unlike this image", image_like_path(@image), method: :delete %>
 <% else %>
   <%= button_to "Like this image", image_like_path(@image) %>
+<% end %>
+
+<% if ! @image.tags.empty? %>
+<strong>Tags: </strong><%= @image.tag_words %>
 <% end %>
 
 <ul>
@@ -28,7 +40,7 @@ Likes <%= @image.likes.count %>
 </ul>
 
 
-
+<strong>Comments:</strong>
   <% @comments.each do |comment| %>
     <%= render "comments/comment", comment: comment %>
   <% end %>
