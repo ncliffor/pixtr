@@ -39,6 +39,7 @@ class ImagesController < ApplicationController
     @gallery = load_gallery_from_url
     @image = @gallery.images.find(params[:id])
 
+
     if @image.update(image_params)
     redirect_to gallery_image_path(@gallery, @image)
     else
@@ -51,7 +52,7 @@ class ImagesController < ApplicationController
   def image_params
     params.
     require(:image).
-      permit(:name, :url, group_ids: [], tag_ids: [])
+      permit(:name, :url, :tag_words, group_ids: [], tag_ids: [])
   end
 
   def load_personal_gallery_from_url

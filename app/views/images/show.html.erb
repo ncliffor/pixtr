@@ -5,16 +5,21 @@
 
 <%= form_for [@image.gallery, @image] do |form| %>
   <strong>Groups: </strong><%= form.collection_check_boxes(:group_ids, Group.all, :id, :name) %>
+<div>
   <%= form.submit "Group Image" %>
+</div>
 <% end %>
 
+<br />
 <%= form_for [@gallery, @image] do |form| %>
-<strong>Tags: </strong><%= form.collection_check_boxes(:tag_ids, @available_tags, :id, :name) %>
-<%= form.submit "Update Tags" %>
+  <strong>Tags: </strong><%= form.text_field :tag_words, size: 70 %>
+<div>
+  <%= form.submit "Add your own tags" %>
+</div>
 <% end %>
 
 <div>
-<%= image_tag @image.url %>
+  <%= image_tag @image.url %>
 </div>
 
 
@@ -28,29 +33,25 @@
   <%= button_to "Like this image", image_like_path(@image) %>
 <% end %>
 
-<% if ! @image.tags.empty? %>
-<strong>Tags: </strong><%= @image.tag_words %>
-<% end %>
-
 <ul>
-Likes <%= @image.likes.count %>
+  Likes <%= @image.likes.count %>
 <% @image.likes.each do |like| %>
   <li><%= like.user.email %> </li>
 <% end %>
 </ul>
 
 
-<strong>Comments:</strong>
-  <% @comments.each do |comment| %>
-    <%= render "comments/comment", comment: comment %>
-  <% end %>
-
 <%= form_for [@image, @comment] do |form| %>
   <%= render "error_messages", target: @comment %>
   <div>
-    <%= form.label :body %>
+    <%= form.label :comment %>
     <%= form.text_area :body %>
   </div>
   <%= form.submit %>
+<% end %>
+
+<strong>Comments:</strong>
+<% @comments.each do |comment| %>
+  <%= render "comments/comment", comment: comment %>
 <% end %>
 
