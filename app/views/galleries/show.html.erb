@@ -4,12 +4,11 @@
 
 <%= link_to "New Image", new_gallery_image_path(@gallery) %>
 
-<ul>
-  <li><% @gallery.images.each do |image| %>
-      <%= image_tag image.url %>
+<ul class="grid columns-3">
+  <% @gallery.images.each do |image| %>
+    <li><%= image_tag image.url %>
       <div>
-        <%= link_to image.name, gallery_image_path(@gallery, image) %>
+        <%= link_to image.name, gallery_image_path(@gallery, image) %></li>
       </div>
     <% end %>
-  </li>
 </ul>

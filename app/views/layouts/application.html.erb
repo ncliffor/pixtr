@@ -1,56 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Pixtr</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <style>
-    body {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .session {
-      float: right;
-    }
-    img {
-      max-height: 25%;
-      max-width: 25%;
-    }
-    body#users{
-      background-image: url(
-  "http://cdn.toonvectors.com/images/2/48122/toonvectors-48122-140.jpg"
-  );
-background-position: 100px 50px; 
-      background-size: 1200px;
-      background-repeat: no-repeat;
-    }
-  </style>
-</head>
-<body>
-  <header class="session">
+  <head>
+    <title>Pixtr</title>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+       </head>
+
+  <body>
+    <header class="session">
+      <% if signed_in? %>
+        <%= link_to "Groups", groups_path %>
+        <%= link_to "Galleries", galleries_path %>
+        <%= link_to "Tags", tags_path %>
+        <%= link_to "User", users_path %> |
+        <%= link_to "Sign out", session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign in", new_session_path %>
+        <%= link_to "Sign up", new_user_path %>
+      <% end %>
+    </header>
+
     <% if signed_in? %>
-      <%= link_to "Groups", groups_path %>
-      <%= link_to "Galleries", galleries_path %>
-      <%= link_to "Tags", tags_path %>
-      <%= link_to "User", users_path %> |
-      <%= link_to "Sign out", session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign in", new_session_path %>
-      <%= link_to "Sign up", new_user_path %>
-    <% end %>
-  </header>
-  <h1><%= link_to "Pixtr", root_path %></h1>
+    <h1><%= link_to "Pixtr", root_path %></h1>
 
-  <img src ="http://cdn.toonvectors.com/images/2/48122/toonvectors-48122-140.jpg"  />
-
-  <% flash.each do |name, msg| %>
-    <% if msg.is_a?(String) %>
-      <%= content_tag :div, msg, :class => "flash_#{name}" %>
-    <% end %>
+    <img src ="http://cdn.toonvectors.com/images/2/48122/toonvectors-48122-140.jpg"  />
   <% end %>
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <%= content_tag :div, msg, :class => "flash_#{name}" %>
+      <% end %>
+    <% end %>
 
-  <%= yield %>
+    <%= yield %>
 
-</body>
+  </body>
 </html>

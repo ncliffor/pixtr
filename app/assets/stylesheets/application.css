@@ -1,15 +1,77 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+<style>
+  
+  body {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .session {
+    float: right;
+  }
+  ul.grid.columns-3 li {
+    width: 30.83%;
+    height: auto;
+    display: inline-block;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    font-size: 1rem;
+    vertical-align: top;
+    box-shadow: 0 0 5px #ddd;
+    box-sizing: border-box;
+  }
+  ul.grid.columns-3 li img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 0 10px;
+  }
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+  body#users{
+    background-image: url(
+    "http://cdn.toonvectors.com/images/2/48122/toonvectors-48122-140.jpg"
+    );
+    background-position: 100px 50px; 
+    background-size: 1200px;
+    background-repeat: no-repeat;
+  }
+  body#sign_in{
+    background-image: url(
+    "http://ambirkelo.files.wordpress.com/2013/09/welcome-mat-ct-home1.jpg"
+    );
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  body#sign_in {
+    width: 100px;
+    height: 100px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+  }
+  </style>
+
+  /*
+   * This is a manifest file that'll be compiled into application.css, which will include all the files
+   * listed below.
+   *
+   * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+   * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+   *
+   * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+   * compiled file so the styles you add here take precedence over styles defined in any styles
+   * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+   * file per style scope.
+   *
+   *= require_tree .
+   *= require_self
+   */
